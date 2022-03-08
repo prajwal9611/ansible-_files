@@ -1,0 +1,9 @@
+---
+ - name: system-log
+   hosts: all
+   tasks:
+     - name: system-log
+       service:
+          name: httpd
+          state: stopped
+          enabled: yes

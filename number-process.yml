@@ -1,0 +1,17 @@
+
+---
+ - name: Sample playbook
+   connection : local
+   hosts: all
+   vars:
+     - grepelement: ".*httpd.*|.*sjsws.*|.*java.*|.*docker.*|.*node.*"
+   tasks:
+     - name: "check processes on destination"
+       command: ps auxwww
+       register: ps_out
+     - set_fact:
+         processdump: "{{ ps_out.stdout | regex_findall(grepelement) }}"
+     - set_fact:
+         Processdumpcount: "{{ processdump | length }}"
+     - debug:
+         msg: "{{ Processdumpcount }}"

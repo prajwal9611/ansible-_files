@@ -1,0 +1,8 @@
+---
+- name: installing Httpd server
+  hosts: all
+  tasks: 
+    - name: installing httpd server
+      yum :
+        name: httpd
+        state: latest

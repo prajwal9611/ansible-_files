@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+     - name: "populate service facts"
+       service_facts:
+     - name: "see the service facts as they are"
+       debug:
+         msg: "{{ansible_facts.services}}"
